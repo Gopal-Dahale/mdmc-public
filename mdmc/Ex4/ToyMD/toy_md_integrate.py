@@ -2,19 +2,20 @@
 
 import math
 
+
 def put_in_box(box, resnr, coords):
-    N      = len(coords)
-    cgcm   = []
-    old    = -1
+    N = len(coords)
+    cgcm = []
+    old = -1
     invres = []
     for i in range(N):
         if (resnr[i] != old):
-            cgcm.append([ 0.0, 0.0, 0.0 ])
+            cgcm.append([0.0, 0.0, 0.0])
             invres.append([])
             old = resnr[i]
         for m in range(3):
-            cgcm[len(cgcm)-1][m] += coords[i][m]
-        invres[len(invres)-1].append(i)
+            cgcm[len(cgcm) - 1][m] += coords[i][m]
+        invres[len(invres) - 1].append(i)
     N = len(cgcm)
     for i in range(N):
         for m in range(3):
@@ -27,10 +28,9 @@ def put_in_box(box, resnr, coords):
             if (cgcm[i][m] <= 0):
                 for k in invres[i]:
                     coords[k][m] += box[m]
-    
+
 
 #def compute_lambda_T(T, T_reference, time_step, tau_T):
- #   if (T == 0 or tau_T == 0):
- #       return 1
- #   return math.sqrt(1 + (time_step/tau_T)*(T_reference/T - 1))
-
+#   if (T == 0 or tau_T == 0):
+#       return 1
+#   return math.sqrt(1 + (time_step/tau_T)*(T_reference/T - 1))
